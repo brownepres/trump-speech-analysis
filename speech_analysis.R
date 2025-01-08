@@ -5,7 +5,7 @@ library(httr)
 library(readxl)
 
 url <- "https://api-inference.huggingface.co/models/cardiffnlp/twitter-roberta-base-sentiment"
-headers <- add_headers(Authorization = "Bearer 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")
+headers <- add_headers(Authorization = "Bearer xx")
 
 get_roberta_score <- function(text){
     text <- text
