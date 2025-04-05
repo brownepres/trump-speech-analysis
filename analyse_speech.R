@@ -34,7 +34,11 @@ dtm <- text_for_dtm %>%
   tokens_wordstem(language = "english") %>% 
   dfm()
 
+<<<<<<< HEAD
 
+=======
+dtm
+>>>>>>> 19a6f92 (update modelling)
 top_words <- quanteda::topfeatures(dtm, 20)
 write.csv(top_words, "top_words.csv")
 
@@ -168,3 +172,13 @@ sentiment_scores_ratio$neg_positive <- sentiment_scores_ratio$neg_positive / sen
 sentiment_scores_ratio$neg_negative <- sentiment_scores_ratio$neg_negative / sentiment_scores_ratio$sum
 
 write.csv(sentiment_scores_ratio, "sentiment_scores_ratio.csv")
+<<<<<<< HEAD
+=======
+
+
+
+100000/sqrt(200000)
+
+
+
+>>>>>>> 19a6f92 (update modelling)
