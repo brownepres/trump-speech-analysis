@@ -16,9 +16,13 @@ word2vec.save("custom_word2vec.model")
 
 def word_to_vec(word):
     if word in word2vec.wv:
-        return word2vec.wv[word]  # Returns a NumPy array
+        return word2vec.wv[word].tolist()  # Returns a NumPy array
     else:
         return None  # For words not in vocabulary
 
 df_tfidf["Vector"] = df_tfidf["word"].apply(lambda words: [word_to_vec(w) for w in words])
+df_tfidf["Vector"] = df_tfidf["Vector"].apply(lambda x: str(x) if x is not None else "None")
+
 print(df_tfidf.head(5))
+
+df_tfidf.to_csv("word2vec_vectors.csv")

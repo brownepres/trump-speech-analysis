@@ -13,13 +13,10 @@ import pprint
 pd.set_option('display.max_rows', 500)
 warnings.filterwarnings('ignore')
 
-#get video urls
-speeches = pd.read_excel("speeches.xlsx")
 
-#script to save audio files
 def save_audio(url, output_path, filename):
     try:
-        yt = YouTube(url)
+        yt = YouTube(url, 'WEB')
         print(f"Downloading: {yt.title}")
         
         # Get audio-only stream
@@ -50,13 +47,10 @@ def save_audio(url, output_path, filename):
         print(f"URL: {url}")
         print(f"Error: {e}")
 
-url_list = speeches["url"].to_list()
-
-
-for i, url in enumerate(url_list, start=1):
-    output_path = "./audio_files"  
-    filename = f"speech_{i}_{speeches["date"][i-1]}_{speeches["state"][i-1]}"
-    save_audio(url, output_path=output_path, filename=filename)
+output_path = "/Users/barnabasepres/University/TDK/trump_speech_analysis/trump-speech-analysis/single_audio_file"  
+filename = 'speech_32_"2024-09-29"_PA'
+url = "https://www.youtube.com/watch?v=zUbDvg2gWXw&ab_channel=LiveNOWfromFOX"
+save_audio(url, output_path=output_path, filename=filename)
 
 #initiate model to script the audio files
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
@@ -82,20 +76,15 @@ pipe = pipeline(
 
 print("Model and pipe has been initiated.")
 
-for i in range(len(url_list)):
-    if speeches["trimming_needed"][i] == "Yes":
-        continue
-    else:
-        print(f"Generating transcript of speech_{i+1}_{speeches["date"][i]}_{speeches["state"][i]}.mp3")
+print("Generating transcript of speech")
+      
+result_txt = pipe(f'./single_audio_file/speech_32_"2024-09-29"_PA.mp3', return_timestamps=True)
+text_to_add = list(result_txt.values())[0]
 
-        result_txt = pipe(f"./audio_files/speech_{i+1}_{speeches["date"][i]}_{speeches["state"][i]}.mp3", return_timestamps=True)
-        text_to_add = list(result_txt.values())[0]
+print("Transcript has been generated.")
+os.makedirs("single_text_file", exist_ok=True)
+file_path = os.path.join("single_text_file", f'speech_32_"2024-09-29"_PA.txt')
+with open(file_path, 'w', encoding='utf-8') as f:
+    f.write(text_to_add)
 
-        print("Transcript has been generated.")
-        os.makedirs("text_files", exist_ok=True)
-        file_path = os.path.join("text_files", f"speech_{i+1}_{speeches["date"][i]}_{speeches["state"][i]}.txt")
-        with open(file_path, 'w', encoding='utf-8') as f:
-            f.write(text_to_add)
-
-        print("Transcript has been added to the folder.")
-print("hello world")
+print("Transcript has been added to the folder.")
