@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+authors:
+- family-names: "Epres"
+  given-names: "Barnabas"
+title: "Quantitative analysis of Donald Trump's speeches"
+version: 1.0.0
+date-released: 2025-04-19
+url: "https://github.com/brownepres/trump-speech-analysis"
