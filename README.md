@@ -1,2 +1,10 @@
-# trump-speech-analysis
-Analysing the campaign speeches of Donald Trump ,using text mining techniques and machine learning, for my Scientific Students' Association Conference paper named "The quantitative analysis of Donald Trump's 2024 campaign speeches". 
+# Statistical patterns in political rhetoric: The quantitative analysis of Donald Trump's 2024 election campaign speeches
+
+## Overview
+This is the GitHub repository or Barnabás Epres' research paper titled " Statistical patterns in political rhetoric: The quantitative analysis of Donald Trump's 2024 election campaign speeches " for the 2025 Scientific Students' Associations Conference (TDK). In the folders the reader can locate all code files and online resources used during the data collection, analysis and modelling. 
+
+
+## Abstract
+My paper for the Scientific Students’ Associations Conference focuses on the quantitative analysis of political speeches, narrowing it down to Donald Trump’s campaign speeches given thorough the 2024 US election rally. This study aims to analyze how the modern voters resonate with old-fashioned lengthy live political speeches amid the over-saturated space of political communication happening over social media. Public speeches naturally influence a great deal of voters and their preferences, however what I was interested in was whether the statistical properties of certain speeches correlate with the popularity, and vice versa. The research is concatenated of two main parts. In the first half descriptive statistical and text mining techniques were used to understand the characteristics of the candidate’s speeches, for example calculating the most important and unique words, the similarity of the speeches or placing them on a republican – democrat political scale. After having gathered the data, I trained and analyzed random forest regression models for better understanding the connection between the speeches and the calculated popularity of Donald Trump. Random forest regression was chosen for its robustness and interpretability. However, the results revealed, that in most cases there is only a slight connection between the popularity and the statistical characteristics of the speeches, except for when certain properties reached outlier, extreme values. This suggests that voters resonated with his rally performances almost exclusively when something “extreme” was said, which could be the result of polarization and the amplificatory effect of social media.
+
+
